@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <title>Image Slider</title>
+   <style>
+     body {
+       font-family: Arial, sans-serif;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-top: 50px;
+       background-image: url(img/bg.webp);
+       background-position: center;
+       background-size: cover;
+       background-repeat: no-repeat;
+     }
+     img {
+       width: 550px;
+       height: 350px;
+       object-fit: cover;
+       border-radius: 10px;
+       box-shadow: 0 5px 8px black;
+     }
+     .buttons {
+       margin-top: 20px;
+     }
+     button {
+       padding: 10px 20px;
+       margin: 0 10px;
+       font-size: 16px;
+       cursor: pointer;
+       border: none;
+       border-radius: 5px;
+       background-color: #007bff;
+       color: white;
+     }
+     button:hover {
+       background-color: #0056b3;
+     }
+   </style>
+ </head>
+ <body>
+ 
+   <h1>Simple Image Slider</h1>
+ 
+   <img id="slider" src="" alt="Image Slider">
+ 
+   <div class="buttons">
+     <button id="prev">Previous</button>
+     <button id="next">Next</button>
+   </div>
+ 
+   <script>
+     const images = [
+
+        "https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/04/indulgent-chocolate-fudge-squares-on-a-decorative-plate.png",
+        "https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/01/delightful-pink-frosted-cupcakes.png",
+        "https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/01/festive-snowflake-cookies-on-a-wooden-board.png",
+        "https://www.foodiesfeed.com/wp-content/uploads/ff-images/2025/01/festive-orange-cake-with-nuts-and-spices.png"
+      
+     ];
+ 
+     let currentIndex = 0;
+ 
+     const slider = document.getElementById('slider');
+     const nextButton = document.getElementById('next');
+     const prevButton = document.getElementById('prev');
+ 
+     function updateImage() {
+       slider.src = images[currentIndex];
+     }
+ 
+     nextButton.addEventListener('click', () => {
+       currentIndex = (currentIndex + 1) % images.length; 
+       updateImage();
+     });
+ 
+     prevButton.addEventListener('click', () => {
+       currentIndex = (currentIndex - 1 + images.length) % images.length; 
+       updateImage();
+     });
+ 
+     updateImage();
+   </script>
+ 
+ </body>
+ </html>
